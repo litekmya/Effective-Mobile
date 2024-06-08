@@ -22,13 +22,7 @@ class SelectedCountryCoordinator: Coordinator {
     func start() {
         let viewModel = SelectedCountryVierwModel(fromText: fromText, inText: inText)
         let selectedCountryVC = SelectedCountryViewController(viewModel: viewModel, coordinator: self)
-//        selectedCountryVC.modalPresentationStyle = .fullScreen
         
-//        if let presentedVC = navigationController.presentedViewController {
-//            presentedVC.present(selectedCountryVC, animated: true)
-//        } else {
-//            navigationController.present(selectedCountryVC, animated: true)
-//        }
         navigationController.pushViewController(selectedCountryVC, animated: true)
     }
     
