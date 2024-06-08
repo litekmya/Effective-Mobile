@@ -17,8 +17,12 @@ class MainVCCoordinator: Coordinator {
     
     func start() {
         let viewModel = MainVCViewModel()
-        let mainVC = ViewController(viewModel: viewModel)
+        let mainVC = ViewController(viewModel: viewModel, coordinator: self)
         navigationController.pushViewController(mainVC, animated: true)
     }
     
+    func goToSearch(fromString: String) {
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController, fromString: fromString)
+        searchCoordinator.start()
+    }
 }

@@ -9,21 +9,61 @@ import UIKit
 
 class SampleViewController: UIViewController {
 
+    private let lbl: UILabel = {
+        let lbl = UILabel()
+        lbl.setup(font: .installSemiboldItalic(fontSize: 36), color: .white, text: "Здесь могла быть ваша реклама))")
+        lbl.numberOfLines = 0
+        lbl.textAlignment = .center
+        return lbl
+    }()
+    
+    private let backBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "arrowshape.backward.fill"), for: .normal)
+        return btn
+    }()
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
+        addTargets()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: - private methods
+    private func addTargets() {
+        backBtn.addTarget(self, action: #selector(backBtnAction), for: .touchUpInside)
     }
-    */
+    
+    //MARK: - objc
+    @objc private func backBtnAction() {
+        dismiss(animated: true)
+    }
+}
 
+//MARK: - Layout
+extension SampleViewController {
+    
+    private func setupUI() {
+        setupView()
+        setupLayoutForChildViews()
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .black
+    }
+    
+    private func setupLayoutForChildViews() {
+        view.addSubview(backBtn)
+        backBtn.snp.makeConstraints { make in
+            make.leading.top.equalTo(view).inset(16)
+            make.width.height.equalTo(44)
+        }
+        
+        view.addSubview(lbl)
+        lbl.snp.makeConstraints { make in
+            make.center.equalTo(view)
+            make.leading.trailing.equalTo(view).inset(32)
+        }
+    }
 }

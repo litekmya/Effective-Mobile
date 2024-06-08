@@ -15,8 +15,12 @@ class SampleCoordinator: Coordinator {
     }
     
     func start() {
-        let exampleVC = ExampleV
+        let sampleVC = SampleViewController()
+        
+        if let presentedVC = navigationController.presentedViewController {
+            presentedVC.present(sampleVC, animated: true)
+        } else {
+            navigationController.present(sampleVC, animated: true)
+        }
     }
-    
-    
 }

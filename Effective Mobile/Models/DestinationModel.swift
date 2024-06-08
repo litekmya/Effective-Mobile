@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct DestinationModel {
+    let fromValue: String
+    let inValue: String
+}
