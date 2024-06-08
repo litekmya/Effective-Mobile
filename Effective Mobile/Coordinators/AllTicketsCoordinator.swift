@@ -29,17 +29,6 @@ class AllTicketsCoordinator: Coordinator {
         )
         
         let allTicketsVC = AllTicketsViewController(viewModel: viewModel)
-        
-//        allTicketsVC.modalPresentationStyle = .fullScreen
-        
-//        if let presentedVC = navigationController.presentedViewController {
-//            if let searchVC = presentedVC.presentedViewController {
-//                searchVC.present(allTicketsVC, animated: true)
-//            }
-//        } else {
-//            navigationController.present(allTicketsVC, animated: true)
-//        }
-        
         navigationController.pushViewController(allTicketsVC, animated: true)
     }
 }
